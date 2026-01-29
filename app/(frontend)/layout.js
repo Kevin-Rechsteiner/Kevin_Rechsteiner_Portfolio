@@ -17,6 +17,8 @@ export const metadata = {
   description: "Personal Portfolio & Tech Blog",
 };
 
+import { Navigation } from "@/app/components/Navigation";
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
@@ -24,25 +26,7 @@ export default function RootLayout({ children }) {
         className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}
         style={{ backgroundColor: "#f5f5f5", color: "#4f4f4f" }}
       >
-        {/* Sticky Header */}
-        <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-md shadow-sm">
-          <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-            {/* Logo */}
-            <Link href="/" className="font-bold text-xl" style={{ color: "#092C4C" }}>
-              Kevin<span style={{ color: "#F2994A" }}>.dev</span>
-            </Link>
-
-            {/* Navigation */}
-            <nav className="flex gap-8 font-medium">
-              <Link href="/" className="hover:text-[#F2994A] transition-colors">
-                Home
-              </Link>
-              <Link href="/blog" className="hover:text-[#F2994A] transition-colors">
-                Blog
-              </Link>
-            </nav>
-          </div>
-        </header>
+        <Navigation />
 
         {/* Main Content (grows to fill space) */}
         <main className="flex-grow">
