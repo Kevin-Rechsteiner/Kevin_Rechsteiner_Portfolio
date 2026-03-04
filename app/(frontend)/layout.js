@@ -1,6 +1,6 @@
-import { Geist, Geist_Mono } from "next/font/google"; // Keep existing fonts
+import { Geist, Geist_Mono } from "next/font/google";
 import "../globals.css";
-import Link from "next/link";
+import { Navigation } from "@/app/components/Navigation";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -14,31 +14,18 @@ const geistMono = Geist_Mono({
 
 export const metadata = {
   title: "Kevin's Portfolio",
-  description: "Personal Portfolio & Tech Blog",
+  description: "Personal Portfolio",
 };
-
-import { Navigation } from "@/app/components/Navigation";
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="de">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}
-        style={{ backgroundColor: "#f5f5f5", color: "#4f4f4f" }}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        style={{ backgroundColor: "#ffffff", color: "#4f4f4f", fontFamily: "var(--font-geist-sans), sans-serif" }}
       >
         <Navigation />
-
-        {/* Main Content (grows to fill space) */}
-        <main className="flex-grow">
-          {children}
-        </main>
-
-        {/* Footer */}
-        <footer className="bg-white border-t border-gray-100 py-8 mt-20">
-          <div className="max-w-6xl mx-auto px-6 text-center text-sm text-gray-500">
-            <p>© {new Date().getFullYear()} Kevin. Built with Next.js 16.</p>
-          </div>
-        </footer>
+        <main>{children}</main>
       </body>
     </html>
   );
