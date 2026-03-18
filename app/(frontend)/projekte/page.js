@@ -1,100 +1,106 @@
 'use client';
 
 import { motion } from "framer-motion";
-import { ExternalLink, Github } from "lucide-react";
-import { Kontakt } from "@/app/components/Kontakt";
-
-const projects = [
-    {
-        title: "E-Commerce Konzept",
-        desc: "Ein Online-Shop Prototyp, entwickelt um Next.js und Routing-Konzepte zu verstehen.",
-        tags: ["Next.js", "Lernprojekt"],
-    },
-    {
-        title: "Task Manager",
-        desc: "Eine kleine App zur Organisation von Schulaufgaben. Fokus lag auf Funktionalität und sauberem Code.",
-        tags: ["React", "Productivity"],
-    },
-];
+import { ExternalLink, Github, Clock } from "lucide-react";
+import { useTheme } from "@/app/context/ThemeContext";
+import { useLanguage } from "@/app/context/LanguageContext";
+import { Footer } from "@/app/components/Footer";
 
 export default function ProjektePage() {
+    const { colors, darkMode } = useTheme();
+    const { t, language } = useLanguage();
+
+    const projects = t.projects.items;
+    const icons = { ExternalLink, Github, Clock };
+
     return (
-        <div className="min-h-screen bg-white">
-            {/* Header */}
-            <section className="pt-28 pb-12 px-6">
-                <div className="max-w-5xl mx-auto">
-                    <motion.div
-                        initial={{ opacity: 0, y: 15 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.5 }}
-                    >
+        <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="min-h-screen transition-colors duration-300" 
+            style={{ backgroundColor: colors.bg }}
+        >
+            <section className="pt-32 pb-32 px-4 sm:px-6 lg:px-8 transition-colors duration-300">
+                <div className="max-w-7xl mx-auto">
+                    <div>
                         <p
-                            className="font-semibold mb-3 text-xs tracking-widest"
-                            style={{ color: "#F2994A" }}
+                            className="font-semibold mb-3 text-xs sm:text-sm tracking-widest transition-colors duration-300"
+                            style={{ color: colors.accent }}
                         >
-                            PROJEKTE
+                            {t.projects.badge}
                         </p>
                         <h1
-                            className="text-3xl md:text-4xl font-bold mb-6"
-                            style={{ color: "#092C4C", lineHeight: "1.3" }}
+                            className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 transition-colors duration-300"
+                            style={{ color: colors.text, lineHeight: "1.3" }}
                         >
-                            Ausgewählte Arbeiten
+                            {t.projects.title}
                         </h1>
                         <p
-                            className="text-lg max-w-2xl"
-                            style={{ color: "#6b7280", lineHeight: "1.8" }}
+                            className="text-base sm:text-lg md:text-xl max-w-2xl transition-colors duration-300"
+                            style={{ color: colors.textSecondary, lineHeight: "1.8" }}
                         >
-                            Hier zeige ich eine Auswahl meiner bisherigen Arbeiten.
-                            Es sind Projekte, bei denen ich Ideen konsequent umgesetzt
-                            und dabei viel gelernt habe. Nicht alles ist perfekt, aber
-                            jedes Projekt steht für einen Schritt in meiner Entwicklung.
+                            {t.projects.description}
                         </p>
-                    </motion.div>
+                    </div>
                 </div>
             </section>
 
-            {/* Projects */}
-            <section className="pb-20 px-6">
-                <div className="max-w-5xl mx-auto">
-                    <div className="grid md:grid-cols-2 gap-8">
+            <section className="pb-20 px-4 sm:px-6 lg:px-8">
+                <div className="max-w-7xl mx-auto">
+                    <div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
                         {projects.map((project, index) => (
-                            <motion.div
+                            <div
                                 key={index}
-                                initial={{ opacity: 0, y: 15 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 0.4, delay: 0.1 + index * 0.1 }}
-                                className="rounded-2xl overflow-hidden transition-shadow duration-200 hover:shadow-md"
-                                style={{ border: "1px solid #e5e7eb" }}
+                                className="rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
+                                style={{
+                                    border: `1px solid ${colors.border}`,
+                                    backgroundColor: colors.card,
+                                    boxShadow: darkMode ? 'none' : '0 4px 20px rgba(0,0,0,0.05)',
+                                }}
                             >
-                                {/* Placeholder Image */}
                                 <div
-                                    className="w-full h-48"
-                                    style={{ backgroundColor: "#d1d5db" }}
-                                />
+                                    className="w-full h-52 sm:h-60 relative flex items-center justify-center transition-colors duration-300"
+                                    style={{ backgroundColor: colors.bgSecondary }}
+                                >
+                                    {project.comingSoon && (
+                                        <div
+                                            className="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium"
+                                            style={{
+                                                backgroundColor: `${colors.accent}20`,
+                                                color: colors.accent,
+                                                border: `1px solid ${colors.accent}40`,
+                                            }}
+                                        >
+                                            {<icons.Clock size={14} />}
+                                            {language === 'de' ? 'Demnächst' : 'Coming Soon'}
+                                        </div>
+                                    )}
+                                </div>
 
-                                {/* Content */}
-                                <div className="p-6">
+                                <div className="p-8">
                                     <h3
-                                        className="text-lg font-bold mb-2"
-                                        style={{ color: "#092C4C" }}
+                                        className="text-lg sm:text-xl font-bold mb-3 transition-colors duration-300"
+                                        style={{ color: colors.text }}
                                     >
                                         {project.title}
                                     </h3>
                                     <p
-                                        className="text-sm mb-4"
-                                        style={{ color: "#6b7280", lineHeight: "1.6" }}
+                                        className="text-sm sm:text-base mb-5 transition-colors duration-300"
+                                        style={{ color: colors.textSecondary, lineHeight: "1.7" }}
                                     >
                                         {project.desc}
                                     </p>
 
-                                    <div className="flex flex-wrap gap-2 mb-4">
+                                    <div className="flex flex-wrap gap-2 mb-6">
                                         {project.tags.map((tag) => (
                                             <span
                                                 key={tag}
-                                                className="px-3 py-1 rounded-md text-xs font-medium"
+                                                className="px-3 py-1 rounded-md text-xs font-medium transition-colors duration-300"
                                                 style={{
-                                                    backgroundColor: "#f3f4f6",
-                                                    color: "#092C4C",
+                                                    backgroundColor: colors.bgSecondary,
+                                                    color: colors.text,
+                                                    border: `1px solid ${colors.border}`,
                                                 }}
                                             >
                                                 {tag}
@@ -102,45 +108,43 @@ export default function ProjektePage() {
                                         ))}
                                     </div>
 
-                                    <div className="flex gap-4">
-                                        <button
-                                            className="flex items-center gap-1.5 text-sm font-medium transition-colors hover:opacity-70"
-                                            style={{ color: "#092C4C" }}
-                                        >
-                                            <ExternalLink size={14} />
-                                            Ansehen
-                                        </button>
-                                        <button
-                                            className="flex items-center gap-1.5 text-sm font-medium transition-colors hover:opacity-70"
-                                            style={{ color: "#9ca3af" }}
-                                        >
-                                            <Github size={14} />
-                                            Code
-                                        </button>
-                                    </div>
+                                    {!project.comingSoon && (
+                                        <div className="flex gap-4">
+                                            <a
+                                                href={project.demo || "#"}
+                                                className="flex items-center gap-1.5 text-sm font-medium transition-all duration-200 hover:opacity-70"
+                                                style={{ color: colors.accent }}
+                                            >
+                                                {<icons.ExternalLink size={14} />}
+                                                {t.projects.view}
+                                            </a>
+                                            <a
+                                                href={project.github || "#"}
+                                                className="flex items-center gap-1.5 text-sm font-medium transition-all duration-200 hover:opacity-70"
+                                                style={{ color: colors.textSecondary }}
+                                            >
+                                                {<icons.Github size={14} />}
+                                                {t.projects.code}
+                                            </a>
+                                        </div>
+                                    )}
                                 </div>
-                            </motion.div>
+                            </div>
                         ))}
                     </div>
 
-                    {/* Note */}
-                    <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ duration: 0.5, delay: 0.3 }}
-                        className="mt-12 p-6 rounded-xl text-center"
-                        style={{ backgroundColor: "#f9f9f9", border: "1px solid #e5e7eb" }}
+                    <div
+                        className="mt-12 p-6 rounded-xl text-center transition-colors duration-300"
+                        style={{ backgroundColor: colors.bgSecondary, border: `1px solid ${colors.border}` }}
                     >
-                        <p className="text-sm" style={{ color: "#6b7280" }}>
-                            Diese Projekte sind nur ein Ausschnitt.
-                            Ich arbeite kontinuierlich an neuen Ideen und lerne dabei stetig dazu.
+                        <p className="text-sm transition-colors duration-300" style={{ color: colors.textSecondary }}>
+                            {t.projects.note}
                         </p>
-                    </motion.div>
+                    </div>
                 </div>
             </section>
 
-            {/* Kontakt */}
-            <Kontakt />
-        </div>
+            <Footer />
+        </motion.div>
     );
 }

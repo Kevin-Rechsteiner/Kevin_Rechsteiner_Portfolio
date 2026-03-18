@@ -9,7 +9,6 @@ export default function BlogIndex() {
     return (
         <div className="min-h-screen pt-32 pb-20 px-6">
             <div className="max-w-6xl mx-auto">
-                {/* Header */}
                 <div className="text-center mb-16">
                     <p className="font-bold mb-4" style={{ color: "#F2994A", fontSize: "0.875rem", letterSpacing: "0.1em" }}>
                         BLOG & GEDANKEN
@@ -22,7 +21,6 @@ export default function BlogIndex() {
                     </p>
                 </div>
 
-                {/* Blog Grid */}
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {BLOG_POSTS.map((post, index) => (
                         <Link key={post.slug} href={`/blog/${post.slug}`}>
