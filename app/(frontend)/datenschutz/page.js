@@ -1,6 +1,5 @@
 'use client';
 
-import { motion } from "framer-motion";
 import { useTheme } from "@/app/context/ThemeContext";
 import { useLanguage } from "@/app/context/LanguageContext";
 import { Footer } from "@/app/components/Footer";
@@ -88,10 +87,7 @@ export default function DatenschutzPage() {
     };
 
     return (
-        <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
+        <div
             className="min-h-screen transition-colors duration-300"
             style={{ backgroundColor: colors.bg }}
         >
@@ -116,22 +112,15 @@ export default function DatenschutzPage() {
 
             <section className="pb-32 px-4 sm:px-6 lg:px-8">
                 <div className="max-w-4xl mx-auto">
-                    <div className="space-y-8">
+                    <div className="prose prose-sm sm:prose-base max-w-none transition-colors duration-300"
+                        style={{
+                            color: colors.text
+                        }}
+                    >
                         {content.sections.map((section, index) => (
-                            <motion.div
-                                key={index}
-                                initial={{ opacity: 0, y: 10 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ duration: 0.5, delay: index * 0.05 }}
-                                className="p-6 sm:p-8 rounded-xl transition-colors duration-300"
-                                style={{
-                                    backgroundColor: colors.card,
-                                    border: `1px solid ${colors.border}`
-                                }}
-                            >
+                            <div key={index} className="mb-8">
                                 <h2
-                                    className="text-lg sm:text-xl font-bold mb-4 transition-colors duration-300"
+                                    className="text-lg sm:text-xl font-bold mb-3 transition-colors duration-300"
                                     style={{ color: colors.text }}
                                 >
                                     {section.title}
@@ -142,29 +131,23 @@ export default function DatenschutzPage() {
                                 >
                                     {section.content}
                                 </p>
-                            </motion.div>
+                            </div>
                         ))}
-                    </div>
 
-                    <motion.div
-                        initial={{ opacity: 0 }}
-                        whileInView={{ opacity: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.5 }}
-                        className="mt-12 text-center"
-                    >
-                        <p
-                            className="text-sm transition-colors duration-300"
-                            style={{ color: colors.textSecondary }}
-                        >
-                            {content.updated}
-                        </p>
-                    </motion.div>
+                        <div className="mt-12 pt-8" style={{ borderTop: `1px solid ${colors.border}` }}>
+                            <p
+                                className="text-sm transition-colors duration-300"
+                                style={{ color: colors.textSecondary }}
+                            >
+                                {content.updated}
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </section>
 
             <Footer />
-        </motion.div>
+        </div>
     );
 }
 
