@@ -11,6 +11,7 @@ export function Footer() {
 
     const navLinks = [
         { href: "/impressum", label: language === 'de' ? 'Impressum' : 'Imprint' },
+        { href: "/datenschutz", label: language === 'de' ? 'Datenschutzerklärung' : 'Privacy Policy' },
     ];
 
     const socialLinks = [
@@ -75,26 +76,23 @@ export function Footer() {
                             Social
                         </h4>
                         <div className="flex gap-3">
-                            {socialLinks.map((social) => {
-                                const IconComponent = social.icon;
-                                return (
-                                    <a
-                                        key={social.label}
-                                        href={social.href}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="p-2 rounded-lg transition-all duration-200 hover:scale-110"
-                                        style={{
-                                            backgroundColor: colors.card,
-                                            color: colors.text,
-                                            border: `1px solid ${colors.border}`,
-                                        }}
-                                        aria-label={social.label}
-                                    >
-                                        {<social.icon size={22} />}
-                                    </a>
-                                );
-                            })}
+                            {socialLinks.map((social) => (
+                                <a
+                                    key={social.label}
+                                    href={social.href}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="p-2 rounded-lg transition-all duration-200 hover:scale-110"
+                                    style={{
+                                        backgroundColor: colors.card,
+                                        color: colors.text,
+                                        border: `1px solid ${colors.border}`,
+                                    }}
+                                    aria-label={social.label}
+                                >
+                                    {<social.icon size={22} />}
+                                </a>
+                            ))}
                         </div>
                     </div>
                 </div>
