@@ -21,27 +21,31 @@ export default function DatenschutzPage() {
                 content: 'Kevin Rechsteiner\nSchulstrasse 5\nE-Mail: kevin.rechsteiner@bluewin.ch'
             },
             {
-                title: '3. Erhebung und Verarbeitung von Daten',
-                content: 'Beim Besuch dieser Website können automatisch technische Daten erfasst werden (z. B. IP-Adresse, Browser, Uhrzeit des Zugriffs). Diese Daten dienen der technischen Bereitstellung und Sicherheit der Website.'
+                title: '3. Zugriffsdaten (Server-Logs)',
+                content: 'Beim Besuch dieser Website werden automatisch Informationen durch den Hosting-Anbieter erfasst (z. B. IP-Adresse, Datum und Uhrzeit, Browsertyp). Diese Daten dienen der technischen Bereitstellung und Sicherheit der Website.'
             },
             {
-                title: '4. Kontaktaufnahme',
-                content: 'Wenn Sie mich per E-Mail kontaktieren, werden Ihre Angaben zur Bearbeitung der Anfrage gespeichert. Diese Daten gebe ich nicht ohne Ihre Einwilligung weiter.'
+                title: '4. Kontaktformular',
+                content: 'Wenn Sie mir über das Kontaktformular Anfragen senden, werden Ihre Angaben (z. B. Name, E-Mail, Nachricht) zur Bearbeitung der Anfrage gespeichert. Diese Daten gebe ich nicht ohne Ihre Einwilligung weiter.'
             },
             {
-                title: '5. Verwendung von Cookies',
-                content: 'Diese Website kann Cookies verwenden, um die Benutzerfreundlichkeit zu verbessern. Sie können Ihren Browser so einstellen, dass Sie über Cookies informiert werden oder diese deaktivieren.'
+                title: '5. Zweck der Datenverarbeitung',
+                content: 'Die Verarbeitung Ihrer Daten erfolgt ausschließlich zur Bearbeitung Ihrer Anfrage sowie zur technischen Bereitstellung der Website.'
             },
             {
-                title: '6. Externe Dienste',
-                content: 'Falls externe Dienste (z. B. Hosting, Schriftarten, APIs) verwendet werden, können diese Daten erfassen. Es gelten die Datenschutzbestimmungen der jeweiligen Anbieter.'
+                title: '6. Speicherung der Daten',
+                content: 'Ihre Daten werden nur so lange gespeichert, wie es zur Bearbeitung Ihrer Anfrage erforderlich ist.'
             },
             {
-                title: '7. Ihre Rechte',
-                content: 'Sie haben das Recht auf Auskunft, Berichtigung und Löschung Ihrer gespeicherten Daten, soweit dem keine gesetzliche Aufbewahrungspflicht entgegensteht.'
+                title: '7. Weitergabe von Daten',
+                content: 'Es erfolgt keine Weitergabe Ihrer Daten an Dritte, außer wenn dies gesetzlich erforderlich ist oder zur technischen Bereitstellung der Website notwendig ist (z. B. Hosting-Anbieter).'
             },
             {
-                title: '8. Änderungen',
+                title: '8. Ihre Rechte',
+                content: 'Sie haben das Recht auf Auskunft über die von mir gespeicherten personenbezogenen Daten sowie auf Berichtigung oder Löschung.'
+            },
+            {
+                title: '9. Änderungen',
                 content: 'Ich behalte mir vor, diese Datenschutzerklärung jederzeit anzupassen.'
             }
         ],
