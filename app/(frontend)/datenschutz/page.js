@@ -4,6 +4,7 @@ import { useTheme } from "@/app/context/ThemeContext";
 import { useLanguage } from "@/app/context/LanguageContext";
 import { Footer } from "@/app/components/Footer";
 
+
 export default function DatenschutzPage() {
     const { colors } = useTheme();
     const { language } = useLanguage();
@@ -18,7 +19,7 @@ export default function DatenschutzPage() {
             },
             {
                 title: '2. Verantwortliche Person',
-                content: 'Kevin Rechsteiner\nSchulstrasse 5\nE-Mail: kevin.rechsteiner@bluewin.ch'
+                content: 'Kevin Rechsteiner\nSchulstrasse 5, 8603 Schwerzenbach\nE-Mail: kevin.rechsteiner@bluewin.ch'
             },
             {
                 title: '3. Zugriffsdaten (Server-Logs)',
@@ -60,7 +61,7 @@ export default function DatenschutzPage() {
             },
             {
                 title: '2. Responsible Person',
-                content: 'Kevin Rechsteiner\nSchoolstrasse 5\nEmail: kevin.rechsteiner@bluewin.ch'
+                content: 'Kevin Rechsteiner\nSchulstrasse 5, 8603 Schwerzenbach\nEmail: kevin.rechsteiner@bluewin.ch'
             },
             {
                 title: '3. Data Collection and Processing',

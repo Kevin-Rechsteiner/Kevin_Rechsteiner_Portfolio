@@ -9,6 +9,7 @@ import { Footer } from "@/app/components/Footer";
 
 const FORMSPREE_ENDPOINT = "https://formspree.io/f/YOUR_FORM_ID";
 
+
 export default function KontaktPage() {
     const { colors } = useTheme();
     const { t, language } = useLanguage();

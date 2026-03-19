@@ -111,7 +111,7 @@ export default function HomePage() {
                 </Link>
                 <Link
                   href="/kontakt"
-                  className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg font-medium transition-all duration-200 hover:scale-105"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg font-medium transition-all duration-200 hover:scale-105 hover:shadow-lg cursor-pointer"
                   style={{
                     backgroundColor: "transparent",
                     color: colors.text,

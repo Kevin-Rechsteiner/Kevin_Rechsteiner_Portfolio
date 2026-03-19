@@ -14,8 +14,13 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Kevin's Portfolio",
-  description: "Personal Portfolio",
+  title: "Kevin Rechsteiner | Developer Portfolio",
+  description: "Persönliches Portfolio von Kevin Rechsteiner. Frontend und Backend Entwickler. Skills in React, Next.js, JavaScript und mehr.",
+  openGraph: {
+    title: "Kevin Rechsteiner | Developer Portfolio",
+    description: "Persönliches Portfolio von Kevin Rechsteiner. Frontend und Backend Entwickler.",
+    type: "website",
+  },
 };
 
 export default function RootLayout({ children }) {

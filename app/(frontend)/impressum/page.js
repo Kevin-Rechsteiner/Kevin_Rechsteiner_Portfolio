@@ -5,6 +5,7 @@ import { useTheme } from "@/app/context/ThemeContext";
 import { useLanguage } from "@/app/context/LanguageContext";
 import { Footer } from "@/app/components/Footer";
 
+
 export default function ImpressumPage() {
     const { colors } = useTheme();
     const { language } = useLanguage();

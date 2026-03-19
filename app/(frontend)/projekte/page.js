@@ -6,6 +6,7 @@ import { useTheme } from "@/app/context/ThemeContext";
 import { useLanguage } from "@/app/context/LanguageContext";
 import { Footer } from "@/app/components/Footer";
 
+
 export default function ProjektePage() {
     const { colors, darkMode } = useTheme();
     const { t, language } = useLanguage();
@@ -52,7 +53,7 @@ export default function ProjektePage() {
                         {projects.map((project, index) => (
                             <div
                                 key={index}
-                                className="rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
+                                className="rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 cursor-pointer"
                                 style={{
                                     border: `1px solid ${colors.border}`,
                                     backgroundColor: colors.card,
