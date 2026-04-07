@@ -23,17 +23,6 @@ export function Hero({ data }) {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8 }}
                 >
-                    <motion.div
-                        initial={{ scale: 0 }}
-                        animate={{ scale: 1 }}
-                        transition={{ delay: 0.2, type: "spring", stiffness: 100 }}
-                        className="inline-block mb-6 px-6 py-2 rounded-full"
-                        style={{ backgroundColor: "rgba(242, 153, 74, 0.1)" }}
-                    >
-                        <p className="font-medium" style={{ color: "#F2994A" }}>
-                            {data.badge}
-                        </p>
-                    </motion.div>
 
                     <motion.h1
                         initial={{ opacity: 0, y: 20 }}

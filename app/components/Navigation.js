@@ -52,13 +52,13 @@ export function Navigation() {
                 boxShadow: '0 2px 8px rgba(0,0,0,0.08)',
             }}
         >
-            <div className="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+            <div className="max-w-6xl mx-auto h-16 flex items-center justify-between">
                 <Link
                     href="/"
                     className="font-bold text-lg tracking-tight flex-shrink-0 transition-colors duration-300"
                     style={{ color: navTextColor }}
                 >
-                    Kevin<span style={{ color: colors.accent }}> Rechsteiner</span>
+                    <span style={{ color: colors.accent }}>Kevin Rechsteiner</span>
                 </Link>
 
                 <div className="flex items-center gap-1 sm:gap-2 md:gap-4">
@@ -95,7 +95,7 @@ export function Navigation() {
                     <div className="relative" ref={langMenuRef}>
                         <button
                             onClick={() => setLangMenuOpen(!langMenuOpen)}
-                            className="flex items-center justify-center gap-1.5 p-2.5 sm:px-3 sm:py-2 rounded-xl font-semibold transition-all duration-200 hover:scale-105"
+                            className="flex items-center justify-center gap-1.5 p-2.5 sm:px-3 sm:py-2 rounded-xl font-semibold transition-opacity duration-200 hover:opacity-85"
                             style={{
                                 color: navTextColor,
                                 backgroundColor: buttonBg,
@@ -144,7 +144,7 @@ export function Navigation() {
 
                     <button
                         onClick={toggleDarkMode}
-                        className="p-2.5 rounded-xl transition-all duration-300 hover:scale-105"
+                        className="p-2.5 rounded-xl transition-opacity duration-200 hover:opacity-85"
                         style={{
                             color: navTextColor,
                             backgroundColor: buttonBg,

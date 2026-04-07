@@ -96,15 +96,9 @@ export default function DatenschutzPage() {
             className="min-h-screen transition-colors duration-300"
             style={{ backgroundColor: colors.bg }}
         >
-            <section className="pt-32 pb-16 px-4 sm:px-6 lg:px-8 transition-colors duration-300">
-                <div className="max-w-4xl mx-auto">
+            <section className="pt-32 pb-16 px-3 sm:px-4 lg:px-6 transition-colors duration-300">
+                <div className="max-w-6xl mx-auto">
                     <div>
-                        <p
-                            className="font-semibold mb-3 text-xs sm:text-sm tracking-widest transition-colors duration-300"
-                            style={{ color: colors.accent }}
-                        >
-                            {content.badge}
-                        </p>
                         <h1
                             className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 transition-colors duration-300"
                             style={{ color: colors.text, lineHeight: "1.3" }}
@@ -115,7 +109,7 @@ export default function DatenschutzPage() {
                 </div>
             </section>
 
-            <section className="pb-32 px-4 sm:px-6 lg:px-8">
+            <section className="pb-32 px-3 sm:px-4 lg:px-6">
                 <div className="max-w-4xl mx-auto">
                     <div className="prose prose-sm sm:prose-base max-w-none transition-colors duration-300"
                         style={{

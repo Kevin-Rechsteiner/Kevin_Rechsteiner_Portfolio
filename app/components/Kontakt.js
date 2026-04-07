@@ -36,12 +36,6 @@ export function Kontakt() {
                     transition={{ duration: 0.5 }}
                     className="mb-10"
                 >
-                    <p
-                        className="font-semibold mb-3 text-xs tracking-widest"
-                        style={{ color: colors.accent }}
-                    >
-                        {t.contact.badge}
-                    </p>
                     <h2
                         className="text-2xl md:text-3xl font-bold mb-4"
                         style={{ color: colors.text }}
@@ -90,7 +84,6 @@ export function Kontakt() {
                     ))}
                 </div>
 
-                {/* Footer line */}
                 <motion.div
                     initial={{ opacity: 0 }}
                     animate={isInView ? { opacity: 1 } : {}}

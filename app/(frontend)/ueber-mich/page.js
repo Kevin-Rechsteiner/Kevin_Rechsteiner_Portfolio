@@ -20,20 +20,14 @@ export default function UeberMichPage() {
     return (
         <div className="min-h-screen transition-colors duration-300" style={{ backgroundColor: colors.bg }}>
             {/* Hero Section */}
-            <section className="pt-32 pb-16 px-6">
-                <div className="max-w-5xl mx-auto">
+            <section className="pt-32 pb-16 px-4 sm:px-5 lg:px-6">
+                <div className="max-w-6xl mx-auto">
                     <div className="grid md:grid-cols-2 gap-12 items-center">
                         <motion.div
                             initial={{ opacity: 0, y: 15 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5 }}
                         >
-                            <p
-                                className="font-semibold mb-3 text-xs sm:text-sm tracking-widest"
-                                style={{ color: colors.accent }}
-                            >
-                                {t.hero.badge}
-                            </p>
                             <h1
                                 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 transition-colors duration-300"
                                 style={{ color: colors.text, lineHeight: "1.3" }}
@@ -65,7 +59,7 @@ export default function UeberMichPage() {
             </section>
 
             {/* About Text */}
-            <section className="py-12 px-6">
+            <section className="py-12 px-4 sm:px-5 lg:px-6">
                 <div className="max-w-5xl mx-auto">
                     <motion.div
                         initial={{ opacity: 0, y: 15 }}
@@ -96,7 +90,7 @@ export default function UeberMichPage() {
             </section>
 
             {/* Hobbies Section */}
-            <section className="py-12 px-6">
+            <section className="py-12 px-4 sm:px-5 lg:px-6">
                 <div className="max-w-5xl mx-auto">
                     <motion.div
                         initial={{ opacity: 0, y: 15 }}

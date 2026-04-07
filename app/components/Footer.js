@@ -21,7 +21,7 @@ export function Footer() {
 
     return (
         <footer
-            className="py-12 px-4 sm:px-6 lg:px-8 transition-colors duration-300"
+            className="py-12 px-3 sm:px-4 lg:px-6 transition-colors duration-300"
             style={{
                 backgroundColor: colors.bgSecondary,
                 borderTop: `1px solid ${colors.border}`
@@ -31,7 +31,7 @@ export function Footer() {
                 <div className="grid sm:grid-cols-3 gap-8 mb-8">
                     <div>
                         <h4
-                            className="font-semibold mb-4 text-sm uppercase tracking-wider transition-colors duration-300"
+                            className="font-semibold mb-4 text-sm uppercase tracking-wide transition-colors duration-300"
                             style={{ color: colors.text }}
                         >
                             {language === 'de' ? 'Navigation' : 'Navigation'}
@@ -41,7 +41,7 @@ export function Footer() {
                                 <li key={link.href}>
                                     <Link
                                         href={link.href}
-                                        className="text-sm transition-all duration-200 hover:opacity-70"
+                                        className="text-sm transition-opacity duration-200 hover:opacity-70"
                                         style={{ color: colors.textSecondary }}
                                     >
                                         {link.label}
@@ -60,7 +60,7 @@ export function Footer() {
                         </h4>
                         <a
                             href="mailto:kevin.rechsteiner@bluewin.ch"
-                            className="flex items-center gap-2 text-sm transition-all duration-200 hover:opacity-70"
+                            className="flex items-center gap-2 text-sm transition-opacity duration-200 hover:opacity-70"
                             style={{ color: colors.textSecondary }}
                         >
                             <Mail size={16} />
@@ -70,7 +70,7 @@ export function Footer() {
 
                     <div>
                         <h4
-                            className="font-semibold mb-4 text-sm uppercase tracking-wider transition-colors duration-300"
+                            className="font-semibold mb-4 text-sm uppercase tracking-wide transition-colors duration-300"
                             style={{ color: colors.text }}
                         >
                             Social
@@ -82,7 +82,7 @@ export function Footer() {
                                     href={social.href}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="p-2 rounded-lg transition-all duration-200 hover:scale-110"
+                                    className="p-2 rounded-lg transition-opacity duration-200 hover:opacity-80"
                                     style={{
                                         backgroundColor: colors.card,
                                         color: colors.text,

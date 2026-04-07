@@ -65,17 +65,11 @@ export default function KontaktPage() {
             className="min-h-screen transition-colors duration-300" 
             style={{ backgroundColor: colors.bg }}
         >
-            <section className="pt-32 pb-16 px-4 sm:px-6 lg:px-8 transition-colors duration-300">
+            <section className="pt-32 pb-16 px-3 sm:px-4 lg:px-6 transition-colors duration-300">
                 <div className="max-w-6xl mx-auto">
                     <div>
-                        <p
-                            className="font-semibold mb-3 text-xs sm:text-sm tracking-widest transition-colors duration-300"
-                            style={{ color: colors.accent }}
-                        >
-                            {t.contact.badge}
-                        </p>
                         <h1
-                            className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 transition-colors duration-300"
+                            className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mb-6 transition-colors duration-300"
                             style={{ color: colors.text, lineHeight: "1.3" }}
                         >
                             {t.contact.title}
@@ -90,12 +84,12 @@ export default function KontaktPage() {
                 </div>
             </section>
 
-            <section className="py-16 px-4 sm:px-6 lg:px-8">
+            <section className="py-16 px-3 sm:px-4 lg:px-6">
                 <div className="max-w-6xl mx-auto">
                     <div className="grid md:grid-cols-2 gap-12">
                         <div>
                             <h2
-                                className="text-xl font-bold mb-6"
+                                className="text-xl font-bold tracking-tight mb-6"
                                 style={{ color: colors.text }}
                             >
                                 {language === 'de' ? 'Nachricht senden' : 'Send a message'}
@@ -193,7 +187,7 @@ export default function KontaktPage() {
                                 <button
                                     type="submit"
                                     disabled={status === 'loading'}
-                                    className="flex items-center gap-2 px-6 py-3 rounded-lg font-medium transition-all hover:opacity-90 disabled:opacity-60"
+                                    className="flex items-center gap-2 px-6 py-3 rounded-lg font-medium transition-opacity duration-200 hover:opacity-90 disabled:opacity-60"
                                     style={{
                                         backgroundColor: "#F2994A",
                                         color: "white",
@@ -217,7 +211,7 @@ export default function KontaktPage() {
 
                         <div>
                             <h2
-                                className="text-xl font-bold mb-6"
+                                className="text-xl font-bold tracking-tight mb-6"
                                 style={{ color: colors.text }}
                             >
                                 {language === 'de' ? 'Direkt erreichen' : 'Direct contact'}
@@ -227,7 +221,7 @@ export default function KontaktPage() {
                                     <a
                                         key={index}
                                         href={link.href}
-                                        className="flex items-center gap-4 px-5 py-4 rounded-xl transition-all duration-200 hover:shadow-md group"
+                                        className="flex items-center gap-4 px-5 py-4 rounded-xl transition-opacity duration-200 hover:opacity-90 group"
                                         style={{
                                             backgroundColor: colors.card,
                                             border: `1px solid ${colors.border}`
@@ -252,26 +246,13 @@ export default function KontaktPage() {
                                         </div>
                                         <ArrowUpRight
                                             size={18}
-                                            className="flex-shrink-0 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                                            className="flex-shrink-0"
                                             style={{ color: colors.accent }}
                                         />
                                     </a>
                                 ))}
                             </div>
 
-                            <div
-                                className="mt-8 p-6 rounded-xl transition-colors duration-300"
-                                style={{
-                                    backgroundColor: colors.bgSecondary,
-                                    border: `1px solid ${colors.border}`,
-                                }}
-                            >
-                                <p className="text-sm transition-colors duration-300" style={{ color: colors.textSecondary, lineHeight: "1.7" }}>
-                                    {language === 'de'
-                                        ? 'Ich freue mich über jede Nachricht und antworte in der Regel innerhalb von 24 Stunden.'
-                                        : 'I look forward to every message and usually respond within 24 hours.'}
-                                </p>
-                            </div>
                         </div>
                     </div>
                 </div>

@@ -13,8 +13,8 @@ export default function ImpressumPage() {
     return (
         <div className="min-h-screen transition-colors duration-300" style={{ backgroundColor: colors.bg }}>
             {/* Header */}
-            <section className="pt-32 pb-16 px-4 sm:px-6 lg:px-8">
-                <div className="max-w-4xl mx-auto">
+            <section className="pt-32 pb-16 px-3 sm:px-4 lg:px-6">
+                <div className="max-w-6xl mx-auto">
                     <motion.div
                         initial={{ opacity: 0, y: 15 }}
                         animate={{ opacity: 1, y: 0 }}
@@ -31,7 +31,7 @@ export default function ImpressumPage() {
             </section>
 
             {/* Content */}
-            <section className="pb-20 px-4 sm:px-6 lg:px-8">
+            <section className="pb-20 px-3 sm:px-4 lg:px-6">
                 <div className="max-w-4xl mx-auto">
                     <motion.div
                         initial={{ opacity: 0, y: 15 }}

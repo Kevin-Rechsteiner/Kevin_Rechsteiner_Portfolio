@@ -4,12 +4,14 @@ import { motion } from "framer-motion";
 import { ExternalLink, Github, Clock } from "lucide-react";
 import { useTheme } from "@/app/context/ThemeContext";
 import { useLanguage } from "@/app/context/LanguageContext";
+import { useRouter } from "next/navigation";
 import { Footer } from "@/app/components/Footer";
 
 
 export default function ProjektePage() {
     const { colors, darkMode } = useTheme();
     const { t, language } = useLanguage();
+    const router = useRouter();
 
     const projects = t.projects.items;
     const icons = { ExternalLink, Github, Clock };
@@ -22,23 +24,17 @@ export default function ProjektePage() {
             className="min-h-screen transition-colors duration-300" 
             style={{ backgroundColor: colors.bg }}
         >
-            <section className="pt-32 pb-32 px-4 sm:px-6 lg:px-8 transition-colors duration-300">
-                <div className="max-w-7xl mx-auto">
+            <section className="pt-32 pb-32 px-3 sm:px-4 lg:px-6 transition-colors duration-300">
+                <div className="max-w-6xl mx-auto">
                     <div>
-                        <p
-                            className="font-semibold mb-3 text-xs sm:text-sm tracking-widest transition-colors duration-300"
-                            style={{ color: colors.accent }}
-                        >
-                            {t.projects.badge}
-                        </p>
                         <h1
-                            className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 transition-colors duration-300"
+                            className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mb-6 transition-colors duration-300"
                             style={{ color: colors.text, lineHeight: "1.3" }}
                         >
                             {t.projects.title}
                         </h1>
                         <p
-                            className="text-base sm:text-lg md:text-xl max-w-2xl transition-colors duration-300"
+                            className="text-base sm:text-lg md:text-xl max-w-3xl transition-colors duration-300"
                             style={{ color: colors.textSecondary, lineHeight: "1.8" }}
                         >
                             {t.projects.description}
@@ -47,13 +43,14 @@ export default function ProjektePage() {
                 </div>
             </section>
 
-            <section className="pb-20 px-4 sm:px-6 lg:px-8">
-                <div className="max-w-7xl mx-auto">
+            <section className="pb-20 px-3 sm:px-4 lg:px-6">
+                <div className="max-w-6xl mx-auto">
                     <div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
                         {projects.map((project, index) => (
                             <div
                                 key={index}
-                                className="rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 cursor-pointer"
+                                className="rounded-2xl overflow-hidden transition-colors duration-200 hover:opacity-95 cursor-pointer"
+                                onClick={() => router.push(`/projekte/${index}`)}
                                 style={{
                                     border: `1px solid ${colors.border}`,
                                     backgroundColor: colors.card,
@@ -81,7 +78,7 @@ export default function ProjektePage() {
 
                                 <div className="p-8">
                                     <h3
-                                        className="text-lg sm:text-xl font-bold mb-3 transition-colors duration-300"
+                                        className="text-lg sm:text-xl font-bold tracking-tight mb-3 transition-colors duration-300"
                                         style={{ color: colors.text }}
                                     >
                                         {project.title}
@@ -114,6 +111,7 @@ export default function ProjektePage() {
                                             <a
                                                 href={project.demo || "#"}
                                                 className="flex items-center gap-1.5 text-sm font-medium transition-all duration-200 hover:opacity-70"
+                                                onClick={(e) => e.stopPropagation()}
                                                 style={{ color: colors.accent }}
                                             >
                                                 {<icons.ExternalLink size={14} />}
@@ -122,6 +120,7 @@ export default function ProjektePage() {
                                             <a
                                                 href={project.github || "#"}
                                                 className="flex items-center gap-1.5 text-sm font-medium transition-all duration-200 hover:opacity-70"
+                                                onClick={(e) => e.stopPropagation()}
                                                 style={{ color: colors.textSecondary }}
                                             >
                                                 {<icons.Github size={14} />}

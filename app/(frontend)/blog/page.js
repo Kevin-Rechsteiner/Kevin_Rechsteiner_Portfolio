@@ -7,7 +7,7 @@ import { ArrowRight, Calendar, Clock } from "lucide-react";
 
 export default function BlogIndex() {
     return (
-        <div className="min-h-screen pt-32 pb-20 px-6">
+        <div className="min-h-screen pt-32 pb-20 px-4 sm:px-5 lg:px-6">
             <div className="max-w-6xl mx-auto">
                 <div className="text-center mb-16">
                     <p className="font-bold mb-4" style={{ color: "#F2994A", fontSize: "0.875rem", letterSpacing: "0.1em" }}>
