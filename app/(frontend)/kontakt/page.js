@@ -7,7 +7,7 @@ import { Mail, Github, Linkedin, ArrowUpRight, Send, CheckCircle, AlertCircle, L
 import { useState } from "react";
 import { Footer } from "@/app/components/Footer";
 
-const FORMSPREE_ENDPOINT = "https://formspree.io/f/YOUR_FORM_ID";
+const FORMSPREE_ENDPOINT = "https://formspree.io/f/mgopblje";
 
 
 export default function KontaktPage() {
