@@ -4,11 +4,10 @@ import { motion } from "framer-motion";
 import { useTheme } from "@/app/context/ThemeContext";
 import { useLanguage } from "@/app/context/LanguageContext";
 import { Mail, Github, Linkedin, ArrowUpRight, Send, CheckCircle, AlertCircle, Loader } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Footer } from "@/app/components/Footer";
 
-const FORMSPREE_ENDPOINT = "https://formspree.io/f/mgopblje";
-
+const TURNSTILE_SITE_KEY = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
 
 
 export default function KontaktPage() {
@@ -16,6 +15,12 @@ export default function KontaktPage() {
     const { t, language } = useLanguage();
     const [formData, setFormData] = useState({ name: '', email: '', message: '' });
     const [status, setStatus] = useState('idle');
+    const [formStartedAt] = useState(() => Date.now());
+    const [errorText, setErrorText] = useState('');
+    const [turnstileToken, setTurnstileToken] = useState('');
+    const [turnstileReady, setTurnstileReady] = useState(false);
+    const turnstileContainerRef = useRef(null);
+    const turnstileWidgetIdRef = useRef(null);
 
     const contactLinks = [
         {
@@ -41,22 +46,116 @@ export default function KontaktPage() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setStatus('loading');
+        setErrorText('');
+        if (!turnstileToken) {
+            setStatus('error');
+            setErrorText(language === 'de'
+                ? 'Bitte bestätige zuerst das Sicherheitsfeld.'
+                : 'Please complete the security check first.');
+            return;
+        }
         try {
-            const res = await fetch(FORMSPREE_ENDPOINT, {
+            const res = await fetch('/api/contact', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-                body: JSON.stringify(formData),
+                body: JSON.stringify({
+                    ...formData,
+                    website: '',
+                    startedAt: formStartedAt,
+                    turnstileToken,
+                }),
             });
             if (res.ok) {
                 setStatus('success');
                 setFormData({ name: '', email: '', message: '' });
+                setTurnstileToken('');
+                if (window.turnstile && turnstileWidgetIdRef.current !== null) {
+                    window.turnstile.reset(turnstileWidgetIdRef.current);
+                }
             } else {
+                const data = await res.json().catch(() => ({}));
+                const errorCode = data?.error;
+                const messageMapDe = {
+                    rate_limited: 'Zu viele Anfragen in kurzer Zeit. Bitte versuche es in einigen Minuten erneut.',
+                    blocked_content: 'Deine Nachricht enthält gesperrte Begriffe. Bitte formuliere sie neu.',
+                    invalid_email: 'Bitte gib eine gültige E-Mail-Adresse ein.',
+                    invalid_payload: 'Bitte überprüfe deine Eingaben und versuche es erneut.',
+                    spam_detected: 'Nachricht wurde als Spam erkannt. Bitte versuche es erneut.',
+                    turnstile_failed: 'Sicherheitsprüfung fehlgeschlagen. Bitte versuche es erneut.',
+                    contact_unavailable: 'Kontaktformular ist aktuell nicht verfügbar. Bitte nutze vorübergehend E-Mail.',
+                };
+                const messageMapEn = {
+                    rate_limited: 'Too many requests in a short time. Please try again in a few minutes.',
+                    blocked_content: 'Your message contains blocked words. Please rephrase it.',
+                    invalid_email: 'Please enter a valid email address.',
+                    invalid_payload: 'Please check your input and try again.',
+                    spam_detected: 'Message was flagged as spam. Please try again.',
+                    turnstile_failed: 'Security check failed. Please try again.',
+                    contact_unavailable: 'Contact form is currently unavailable. Please use email for now.',
+                };
+                const fallbackText = language === 'de'
+                    ? 'Fehler beim Senden. Bitte versuche es erneut oder schreib mir direkt per E-Mail.'
+                    : 'Error sending message. Please try again or contact me directly via email.';
+                const selectedMap = language === 'de' ? messageMapDe : messageMapEn;
+                setErrorText(selectedMap[errorCode] || fallbackText);
                 setStatus('error');
+                setTurnstileToken('');
+                if (window.turnstile && turnstileWidgetIdRef.current !== null) {
+                    window.turnstile.reset(turnstileWidgetIdRef.current);
+                }
             }
         } catch {
+            setErrorText(language === 'de'
+                ? 'Netzwerkfehler. Bitte versuche es erneut oder kontaktiere mich direkt per E-Mail.'
+                : 'Network error. Please try again or contact me directly via email.');
             setStatus('error');
+            setTurnstileToken('');
+            if (window.turnstile && turnstileWidgetIdRef.current !== null) {
+                window.turnstile.reset(turnstileWidgetIdRef.current);
+            }
         }
     };
+
+    useEffect(() => {
+        if (!TURNSTILE_SITE_KEY || turnstileReady) {
+            return;
+        }
+
+        const existingScript = document.querySelector('script[data-turnstile-script="true"]');
+
+        const renderTurnstile = () => {
+            if (!window.turnstile || !turnstileContainerRef.current) {
+                return;
+            }
+
+            if (turnstileWidgetIdRef.current !== null) {
+                return;
+            }
+
+            turnstileWidgetIdRef.current = window.turnstile.render(turnstileContainerRef.current, {
+                sitekey: TURNSTILE_SITE_KEY,
+                callback: (token) => setTurnstileToken(token),
+                'expired-callback': () => setTurnstileToken(''),
+                'error-callback': () => setTurnstileToken(''),
+                theme: colors.bg === '#ffffff' ? 'light' : 'dark',
+            });
+            setTurnstileReady(true);
+        };
+
+        if (!existingScript) {
+            const script = document.createElement('script');
+            script.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit';
+            script.async = true;
+            script.defer = true;
+            script.dataset.turnstileScript = 'true';
+            script.onload = renderTurnstile;
+            document.body.appendChild(script);
+        } else if (window.turnstile) {
+            renderTurnstile();
+        } else {
+            existingScript.addEventListener('load', renderTurnstile, { once: true });
+        }
+    }, [colors.bg, turnstileReady]);
 
     return (
         <motion.div 
@@ -116,6 +215,24 @@ export default function KontaktPage() {
                                         required
                                     />
                                 </div>
+                                <div className="pt-2">
+                                    <div ref={turnstileContainerRef} />
+                                    {!TURNSTILE_SITE_KEY && (
+                                        <p className="mt-2 text-sm" style={{ color: colors.textSecondary }}>
+                                            {language === 'de'
+                                                ? 'Turnstile ist noch nicht konfiguriert.'
+                                                : 'Turnstile is not configured yet.'}
+                                        </p>
+                                    )}
+                                </div>
+                                <input
+                                    type="text"
+                                    name="website"
+                                    tabIndex={-1}
+                                    autoComplete="off"
+                                    className="hidden"
+                                    aria-hidden="true"
+                                />
                                 <div>
                                     <label
                                         className="block text-sm font-medium mb-2"
@@ -178,9 +295,9 @@ export default function KontaktPage() {
                                     >
                                         <AlertCircle size={18} className="text-red-500 flex-shrink-0" />
                                         <p className="text-sm text-red-500 font-medium">
-                                            {language === 'de'
+                                            {errorText || (language === 'de'
                                                 ? 'Fehler beim Senden. Bitte versuche es erneut oder schreib mir direkt per E-Mail.'
-                                                : 'Error sending message. Please try again or contact me directly via email.'}
+                                                : 'Error sending message. Please try again or contact me directly via email.')}
                                         </p>
                                     </div>
                                 )}
