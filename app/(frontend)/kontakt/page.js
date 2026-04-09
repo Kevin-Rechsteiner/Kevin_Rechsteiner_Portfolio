@@ -32,14 +32,14 @@ export default function KontaktPage() {
         {
             icon: Github,
             label: t.contact.github,
-            value: "github.com/kevin",
-            href: "https://github.com",
+            value: "github.com/Kevin-Rechsteiner",
+            href: "https://github.com/Kevin-Rechsteiner",
         },
         {
             icon: Linkedin,
             label: "LinkedIn",
-            value: "linkedin.com/in/kevin",
-            href: "https://linkedin.com",
+            value: "linkedin.com/in/kevin-rechsteiner-5a66732b0/",
+            href: "https://www.linkedin.com/in/kevin-rechsteiner-5a66732b0/",
         },
     ];
 

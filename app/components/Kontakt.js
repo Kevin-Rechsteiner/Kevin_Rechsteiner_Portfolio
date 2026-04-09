@@ -22,8 +22,8 @@ export function Kontakt() {
         {
             icon: Github,
             label: t.contact.github,
-            value: "github.com/kevin",
-            href: "https://github.com",
+            value: "github.com/Kevin-Rechsteiner",
+            href: "https://github.com/Kevin-Rechsteiner",
         },
     ];
 

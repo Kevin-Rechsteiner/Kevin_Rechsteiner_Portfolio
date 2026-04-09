@@ -16,6 +16,11 @@ const geistMono = Geist_Mono({
 export const metadata = {
   title: "Kevin Rechsteiner | Developer Portfolio",
   description: "Persönliches Portfolio von Kevin Rechsteiner. Frontend und Backend Entwickler. Skills in React, Next.js, JavaScript und mehr.",
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+    apple: "/favicon.ico",
+  },
   openGraph: {
     title: "Kevin Rechsteiner | Developer Portfolio",
     description: "Persönliches Portfolio von Kevin Rechsteiner. Frontend und Backend Entwickler.",

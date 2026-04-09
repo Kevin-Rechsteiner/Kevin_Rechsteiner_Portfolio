@@ -15,8 +15,8 @@ export function Footer() {
     ];
 
     const socialLinks = [
-        { href: "https://github.com", icon: Github, label: "GitHub" },
-        { href: "https://linkedin.com", icon: Linkedin, label: "LinkedIn" },
+        { href: "https://github.com/Kevin-Rechsteiner", icon: Github, label: "GitHub" },
+        { href: "https://www.linkedin.com/in/kevin-rechsteiner-5a66732b0/", icon: Linkedin, label: "LinkedIn" },
     ];
 
     return (

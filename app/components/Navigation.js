@@ -37,8 +37,8 @@ export function Navigation() {
     ];
 
     const languages = [
-        { code: 'de', label: 'Deutsch', flag: '🇩🇪' },
-        { code: 'en', label: 'English', flag: '🇬🇧' },
+        { code: 'de', label: 'Deutsch' },
+        { code: 'en', label: 'English' },
     ];
 
     return (
@@ -95,14 +95,14 @@ export function Navigation() {
                     <div className="relative" ref={langMenuRef}>
                         <button
                             onClick={() => setLangMenuOpen(!langMenuOpen)}
-                            className="flex items-center justify-center gap-1.5 p-2.5 sm:px-3 sm:py-2 rounded-xl font-semibold transition-opacity duration-200 hover:opacity-85"
+                            className="flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl font-semibold transition-opacity duration-200 hover:opacity-85"
                             style={{
                                 color: navTextColor,
                                 backgroundColor: buttonBg,
                             }}
                             aria-label="Select language"
                         >
-                            <Globe size={20} strokeWidth={2.5} />
+                            <Globe size={18} strokeWidth={2.5} />
                             <span className="hidden sm:inline text-sm">{language.toUpperCase()}</span>
                             <ChevronDown size={14} className={`hidden sm:block transition-transform duration-200 ${langMenuOpen ? 'rotate-180' : ''}`} />
                         </button>
@@ -127,13 +127,12 @@ export function Navigation() {
                                                 setLanguage(lang.code);
                                                 setLangMenuOpen(false);
                                             }}
-                                            className="w-full flex items-center gap-3 px-4 py-3 text-sm font-medium transition-colors duration-150"
+                                            className="w-full flex items-center px-4 py-3 text-sm font-medium transition-colors duration-150"
                                             style={{
                                                 color: language === lang.code ? colors.accent : colors.text,
                                                 backgroundColor: language === lang.code ? colors.bgSecondary : 'transparent',
                                             }}
                                         >
-                                            <span className="text-lg">{lang.flag}</span>
                                             {lang.label}
                                         </button>
                                     ))}
@@ -144,10 +143,11 @@ export function Navigation() {
 
                     <button
                         onClick={toggleDarkMode}
-                        className="p-2.5 rounded-xl transition-opacity duration-200 hover:opacity-85"
+                        className="px-3 py-2 rounded-xl transition-opacity duration-200 hover:opacity-85"
                         style={{
                             color: navTextColor,
-                            backgroundColor: buttonBg,
+                            backgroundColor: 'transparent',
+                            border: 'none',
                         }}
                         aria-label="Toggle dark mode"
                     >
@@ -158,7 +158,7 @@ export function Navigation() {
                             exit={{ rotate: 90, opacity: 0 }}
                             transition={{ duration: 0.2 }}
                         >
-                            {darkMode ? <Sun size={22} strokeWidth={2.5} /> : <Moon size={22} strokeWidth={2.5} />}
+                            {darkMode ? <Sun size={18} strokeWidth={2.5} /> : <Moon size={18} strokeWidth={2.5} />}
                         </motion.div>
                     </button>
                 </div>

@@ -8,8 +8,7 @@ export function Skills({ data }) {
     const ref = useRef(null);
     const isInView = useInView(ref, { once: true, amount: 0.3 });
 
-    // Visual data that enhances the simple list from content.js
-    // We keep the "levels" here for the design aesthetic requested
+
     const technicalSkills = [
         { name: "JavaScript/TypeScript", level: 85, color: "#F2994A" },
         { name: "React & Next.js", level: 80, color: "#F2994A" },

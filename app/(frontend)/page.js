@@ -39,7 +39,7 @@ export default function HomePage() {
       desc: language === 'de'
         ? 'Regelmässiges Training im Gym gehört zu meinem Alltag und hat mir viel über Disziplin und Durchhaltevermögen beigebracht. Es zeigt mir jeden Tag aufs Neue, dass konstante Arbeit zu sichtbaren Ergebnissen führt. Diese Einstellung nehme ich auch in meine Arbeit als Entwickler mit.'
         : 'Regular gym training is part of my daily routine and has taught me a lot about discipline and perseverance. It shows me every day that consistent work leads to visible results. I bring this mindset into my work as a developer as well.',
-      image: '/gym.jpg',
+      image: '/hobbys_fotos/gym.jpg',
     },
     {
       id: 2,
@@ -47,7 +47,7 @@ export default function HomePage() {
       desc: language === 'de'
         ? 'Neun Jahre lang habe ich im Verein gespielt und dabei gelernt, wie wichtig Teamarbeit und Zusammenhalt sind. Aus persönlichen Gründen habe ich aufgehört, aber die Leidenschaft ist geblieben. Heute spiele ich regelmässig mit Freunden in meiner Freizeit.'
         : 'I played in a club for nine years and learned how important teamwork and cohesion are. I stopped for personal reasons, but the passion remains. Today I play regularly with friends in my free time.',
-      image: '/fussball_img.jpg',
+      image: '/hobbys_fotos/fussball_img.jpg',
     },
     {
       id: 3,
@@ -55,7 +55,7 @@ export default function HomePage() {
       desc: language === 'de'
         ? 'Fünf Jahre lang habe ich akustische Gitarre gespielt, dann eine Pause gemacht. Seit einem Jahr lerne ich jetzt E-Gitarre und bringe mir alles selbst bei. Musik ist für mich ein kreativer Ausgleich und eine willkommene Pause vom Bildschirm.'
         : 'I played acoustic guitar for five years, then took a break. For the past year, I have been learning electric guitar and teaching myself everything. Music is a creative balance for me and a welcome break from the screen.',
-      image: '/egitarre.jpg',
+      image: '/hobbys_fotos/egitarre.jpg',
     },
     {
       id: 4,
@@ -63,9 +63,25 @@ export default function HomePage() {
       desc: language === 'de'
         ? 'Neues ausprobieren, Reisen und Erfahrungen mit Freunden teilen. Es gibt so viele Dinge zu entdecken, dass ich gar nicht alles aufzählen kann. Ich bin offen für alles und schätze jeden Moment, der mich weiterbringt oder einfach glücklich macht.'
         : 'Traveling, trying new things and sharing experiences with friends. There are so many things to discover that I cannot even list them all. I am open to everything and appreciate every moment that helps me grow or simply makes me happy.',
-      image: '/free-photo-of-felsen-berg-pfad-hugel.jpeg',
+      image: '/hobbys_fotos/wanderweg_vietnam.jpg',
     },
   ];
+
+  const getCircularOffset = (index) => {
+    const total = skills.length;
+    let offset = index - activeSkillIndex;
+    if (offset > total / 2) offset -= total;
+    if (offset < -total / 2) offset += total;
+    return offset;
+  };
+
+  const prevSkill = () => {
+    setActiveSkillIndex((prev) => (prev - 1 + skills.length) % skills.length);
+  };
+
+  const nextSkill = () => {
+    setActiveSkillIndex((prev) => (prev + 1) % skills.length);
+  };
 
   return (
     <div
@@ -172,7 +188,7 @@ export default function HomePage() {
             <div className="relative max-w-6xl mx-auto">
               <button
                 type="button"
-                onClick={() => setActiveSkillIndex((prev) => Math.max(prev - 1, 0))}
+                onClick={prevSkill}
                 aria-label={language === 'de' ? 'Nach links scrollen' : 'Scroll left'}
                 className="absolute left-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full flex items-center justify-center transition-opacity duration-200 hover:opacity-80"
                 style={{
@@ -186,7 +202,7 @@ export default function HomePage() {
 
               <button
                 type="button"
-                onClick={() => setActiveSkillIndex((prev) => Math.min(prev + 1, skills.length - 1))}
+                onClick={nextSkill}
                 aria-label={language === 'de' ? 'Nach rechts scrollen' : 'Scroll right'}
                 className="absolute right-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full flex items-center justify-center transition-opacity duration-200 hover:opacity-80"
                 style={{
@@ -199,20 +215,23 @@ export default function HomePage() {
               </button>
 
               <div className="relative h-[360px] sm:h-[390px] md:h-[420px] overflow-hidden px-10 sm:px-12">
-              {skills.map((skill, index) => (
+              {skills.map((skill, index) => {
+                const offset = getCircularOffset(index);
+                const isVisible = Math.abs(offset) <= 2;
+                return (
                 <motion.div
                   key={skill.name}
                   initial={{ opacity: 0 }}
-                  animate={{ opacity: Math.abs(index - activeSkillIndex) <= 2 ? 1 : 0 }}
-                  transition={{ duration: 0.2, delay: 0.05 + index * 0.03 }}
+                  animate={{ opacity: isVisible ? 1 : 0 }}
+                  transition={{ duration: 0.25 }}
                   className="absolute left-1/2 top-1/2 w-[150px] sm:w-[175px] md:w-[210px] min-h-[260px] sm:min-h-[300px] md:min-h-[340px] py-5 px-4 rounded-2xl flex flex-col items-center justify-center gap-4 transition-all duration-300 will-change-transform cursor-default"
                   style={{
                     backgroundColor: darkMode ? colors.card : 'rgba(255,255,255,0.95)',
                     border: `1px solid ${colors.border}`,
-                    transform: `translate(-50%, -50%) translateX(calc(${index - activeSkillIndex} * clamp(72px, 11vw, 155px))) scale(${index === activeSkillIndex ? 1 : Math.abs(index - activeSkillIndex) === 1 ? 0.93 : 0.86})`,
-                    zIndex: 20 - Math.abs(index - activeSkillIndex),
-                    pointerEvents: index === activeSkillIndex ? 'auto' : 'none',
-                    boxShadow: index === activeSkillIndex
+                    transform: `translate(-50%, -50%) translateX(calc(${offset} * clamp(72px, 11vw, 155px))) scale(${offset === 0 ? 1 : Math.abs(offset) === 1 ? 0.93 : 0.86})`,
+                    zIndex: 20 - Math.abs(offset),
+                    pointerEvents: offset === 0 ? 'auto' : 'none',
+                    boxShadow: offset === 0
                       ? (darkMode ? '0 8px 24px rgba(0,0,0,0.5)' : '0 10px 26px rgba(0,0,0,0.12)')
                       : (darkMode ? '0 2px 10px rgba(0,0,0,0.35)' : '0 4px 12px rgba(0,0,0,0.08)'),
                   }}
@@ -240,7 +259,8 @@ export default function HomePage() {
                     {skill.type}
                   </span>
                 </motion.div>
-              ))}
+              );
+              })}
               </div>
             </div>
           </motion.div>
@@ -262,9 +282,13 @@ export default function HomePage() {
               {language === 'de' ? 'Hobbys & Interessen' : 'Hobbies & Interests'}
             </h2>
 
-            <div className="space-y-12">
+            <div style={{ borderTop: `1px solid ${colors.border}`, borderBottom: `1px solid ${colors.border}` }}>
               {hobbies.map((hobby, index) => (
-                <div key={hobby.id} className="py-4 md:py-6" style={{ borderBottom: `1px solid ${colors.border}` }}>
+                <div
+                  key={hobby.id}
+                  className="py-8 md:py-10"
+                  style={index < hobbies.length - 1 ? { borderBottom: `1px solid ${colors.border}` } : undefined}
+                >
                   <div className="grid lg:grid-cols-12 gap-6 lg:gap-8 items-center">
                     <div className={`lg:col-span-8 ${index % 2 === 1 ? 'lg:col-start-5' : 'lg:col-start-1'}`}>
                       <h3

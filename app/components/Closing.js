@@ -12,16 +12,16 @@ export function Closing({ data }) {
         {
             icon: <Mail size={24} />,
             label: "E-Mail",
-            value: "kontakt@beispiel.de",
+            value: "kevin.rechsteiner@bluewin.ch",
             color: "#092C4C",
-            href: "mailto:kontakt@beispiel.de"
+            href: "mailto:kevin.rechsteiner@bluewin.ch"
         },
         {
             icon: <Github size={24} />,
             label: "GitHub",
-            value: "github.com/student",
+            value: "github.com/Kevin-Rechsteiner",
             color: "#092C4C",
-            href: "https://github.com"
+            href: "https://github.com/Kevin-Rechsteiner"
         },
     ];
 
@@ -134,7 +134,7 @@ export function Closing({ data }) {
                                 </label>
                                 <input
                                     type="email"
-                                    placeholder="ihre.email@beispiel.de"
+                                    placeholder="kevin.rechsteiner@bluewin.ch"
                                     className="w-full px-4 py-3 rounded-lg border transition-all focus:outline-none focus:ring-2"
                                     style={{
                                         borderColor: "#E0E0E0",
