@@ -14,7 +14,7 @@ export default function ProjektePage() {
     const router = useRouter();
 
     const projects = t.projects.items;
-    const icons = { ExternalLink, Github, Clock };
+    const icons = { ExternalLink, Github, Clock, Zap };
 
     return (
         <motion.div 
