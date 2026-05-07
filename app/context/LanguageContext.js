@@ -37,46 +37,19 @@ const translations = {
             note: 'Diese Projekte sind nur ein Ausschnitt. Ich arbeite kontinuierlich an neuen Ideen und lerne dabei stetig dazu.',
             items: [
                 {
-                    title: 'E-Commerce Konzept',
-                    desc: 'Ein Online-Shop Prototyp, entwickelt um Next.js und Routing-Konzepte zu verstehen.',
-                    image: '/placehold.svg',
-                    tags: ['Next.js', 'React', 'Tailwind'],
+                    title: 'Clothes Archive',
+                    desc: 'Eine Anwendung zur Verwaltung und Katalogisierung von Kleidungsstücken. Ein Projekt, um moderne Web-Technologien und Datenbankkonzepte praktisch umzusetzen.',
+                    image: '/projekte_fotos/fashion-clothes_ZN97ZIF3ZU.jpg',
+                    tags: ['React', 'Next.js', 'Database'],
                     details: [
-                        'In diesem Projekt habe ich mich auf ein sauberes Seitenrouting, wiederverwendbare Komponenten und eine klare Produktdarstellung konzentriert.',
-                        'Der Fokus lag auf einem ruhigen UI mit nachvollziehbarer Navigation, damit Besucher schnell zum gewunschten Inhalt kommen.',
-                        'Technisch habe ich dabei gelernt, wie Datenstrukturen fur Produkte organisiert und in mehreren Ansichten konsistent dargestellt werden.'
-                    ],
-                    demo: '#',
-                    github: '#',
-                    comingSoon: false,
-                },
-                {
-                    title: 'Task Manager',
-                    desc: 'Eine kleine App zur Organisation von Schulaufgaben. Fokus lag auf Funktionalität und sauberem Code.',
-                    image: '/placehold.svg',
-                    tags: ['React', 'JavaScript'],
-                    details: [
-                        'Der Task Manager entstand aus dem Alltag und sollte eine einfache, ubersichtliche Aufgabenverwaltung fur Schule und Projekte bieten.',
-                        'Ich habe Wert auf klare Zustande, saubere Formularlogik und ein reduziertes Interface gelegt, damit die App schnell benutzbar bleibt.',
-                        'Durch dieses Projekt konnte ich meine Kenntnisse in State-Management, Komponentenstruktur und Fehlerbehandlung vertiefen.'
-                    ],
-                    demo: '#',
-                    github: '#',
-                    comingSoon: false,
-                },
-                {
-                    title: 'Mein nächstes Projekt',
-                    desc: 'Diesen Platz fülle ich bald mit meinem nächsten Projekt. Ich arbeite kontinuierlich an neuen Ideen.',
-                    image: '/placehold.svg',
-                    tags: [],
-                    details: [
-                        'Dieses Projekt befindet sich aktuell in Planung und wird den Schwerpunkt auf praxisnahe Problemloesung legen.',
-                        'Ziel ist eine Anwendung, die sowohl technisch sauber umgesetzt ist als auch inhaltlich einen klaren Mehrwert bietet.',
-                        'Sobald die Kernfunktionen stehen, folgen Demo und Code-Link.'
+                        'Fokus auf strukturierte Daten, klare Suche und eine einfache Verwaltung von Katalogeinträgen.',
+                        'Ich setze das UI bewusst reduziert um, damit Inhalte schnell erfassbar bleiben.',
+                        'Das Projekt ist noch in Arbeit und wird schrittweise erweitert.'
                     ],
                     demo: null,
-                    github: null,
-                    comingSoon: true,
+                    github: 'https://github.com/Kevin-Rechsteiner/ClothesArchive',
+                    comingSoon: false,
+                    inProgress: true,
                 },
             ],
         },
@@ -120,46 +93,19 @@ const translations = {
             note: 'These projects are just a sample. I continuously work on new ideas and keep learning.',
             items: [
                 {
-                    title: 'E-Commerce Concept',
-                    desc: 'An online shop prototype, developed to understand Next.js and routing concepts.',
-                    image: '/placehold.svg',
-                    tags: ['Next.js', 'React', 'Tailwind'],
+                    title: 'Clothes Archive',
+                    desc: 'An app for managing and cataloging clothing items. A project to apply modern web technologies and database concepts.',
+                    image: '/projekte_fotos/fashion-clothes_ZN97ZIF3ZU.jpg',
+                    tags: ['React', 'Next.js', 'Database'],
                     details: [
-                        'In this project, I focused on clean page routing, reusable components, and a clear product presentation.',
-                        'The goal was a calm UI and easy navigation so visitors can reach the right content quickly.',
-                        'Technically, I improved how I structure product data and keep it consistent across multiple views.'
-                    ],
-                    demo: '#',
-                    github: '#',
-                    comingSoon: false,
-                },
-                {
-                    title: 'Task Manager',
-                    desc: 'A small app for organizing school tasks. Focus was on functionality and clean code.',
-                    image: '/placehold.svg',
-                    tags: ['React', 'JavaScript'],
-                    details: [
-                        'This task manager started from real daily needs and is designed to keep school tasks and small projects organized.',
-                        'I focused on clear state transitions, reliable form logic, and a minimal interface that stays easy to use.',
-                        'The project helped me deepen my skills in state management, component structure, and basic error handling.'
-                    ],
-                    demo: '#',
-                    github: '#',
-                    comingSoon: false,
-                },
-                {
-                    title: 'My Next Project',
-                    desc: 'I will fill this spot soon with my next project. I am continuously working on new ideas.',
-                    image: '/placehold.svg',
-                    tags: [],
-                    details: [
-                        'This project is currently in planning and will focus on practical problem solving.',
-                        'The goal is an application that is technically clean and offers clear value in real usage.',
-                        'Once the core functionality is ready, demo and code links will be added.'
+                        'Focus on structured data, clear search, and simple catalog management.',
+                        'I keep the UI intentionally minimal so content stays easy to scan.',
+                        'This project is still in progress and will be expanded step by step.'
                     ],
                     demo: null,
-                    github: null,
-                    comingSoon: true,
+                    github: 'https://github.com/Kevin-Rechsteiner/ClothesArchive',
+                    comingSoon: false,
+                    inProgress: true,
                 },
             ],
         },
@@ -219,4 +165,3 @@ export function useLanguage() {
     }
     return context;
 }
-
