@@ -5,6 +5,7 @@ import { ExternalLink, Github, Clock, Zap } from "lucide-react";
 import { useTheme } from "@/app/context/ThemeContext";
 import { useLanguage } from "@/app/context/LanguageContext";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 import { Footer } from "@/app/components/Footer";
 
 
@@ -58,23 +59,40 @@ export default function ProjektePage() {
                                 }}
                             >
                                 <div
-                                    className="w-full h-52 sm:h-60 relative flex items-center justify-center transition-colors duration-300"
+                                    className="w-full h-52 sm:h-60 relative flex items-center justify-center transition-colors duration-300 overflow-hidden"
                                     style={{ backgroundColor: colors.bgSecondary }}
                                 >
+                                    {project.image ? (
+                                        <Image
+                                            src={project.image}
+                                            alt={project.title}
+                                            fill
+                                            className="object-cover"
+                                            quality={75}
+                                            loading="lazy"
+                                        />
+                                    ) : null}
                                     {(project.comingSoon || project.inProgress) && (
                                         <div
-                                            className="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium"
+                                            className="absolute inset-0 flex items-center justify-center"
                                             style={{
-                                                backgroundColor: `${colors.accent}20`,
-                                                color: colors.accent,
-                                                border: `1px solid ${colors.accent}40`,
+                                                backgroundColor: 'rgba(0, 0, 0, 0.3)'
                                             }}
                                         >
-                                            {project.inProgress ? <Zap size={14} /> : <Clock size={14} />}
-                                            {project.inProgress 
-                                                ? (language === 'de' ? 'In Arbeit' : 'In Progress')
-                                                : (language === 'de' ? 'Demnächst' : 'Coming Soon')
-                                            }
+                                            <div
+                                                className="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium"
+                                                style={{
+                                                    backgroundColor: `${colors.accent}20`,
+                                                    color: colors.accent,
+                                                    border: `1px solid ${colors.accent}40`,
+                                                }}
+                                            >
+                                                {project.inProgress ? <Zap size={14} /> : <Clock size={14} />}
+                                                {project.inProgress 
+                                                    ? (language === 'de' ? 'In Arbeit' : 'In Progress')
+                                                    : (language === 'de' ? 'Demnächst' : 'Coming Soon')
+                                                }
+                                            </div>
                                         </div>
                                     )}
                                 </div>
@@ -111,24 +129,28 @@ export default function ProjektePage() {
 
                                     {!project.comingSoon && (
                                         <div className="flex gap-4">
-                                            <a
-                                                href={project.demo || "#"}
-                                                className="flex items-center gap-1.5 text-sm font-medium transition-all duration-200 hover:opacity-70"
-                                                onClick={(e) => e.stopPropagation()}
-                                                style={{ color: colors.accent }}
-                                            >
-                                                {<icons.ExternalLink size={14} />}
-                                                {t.projects.view}
-                                            </a>
-                                            <a
-                                                href={project.github || "#"}
-                                                className="flex items-center gap-1.5 text-sm font-medium transition-all duration-200 hover:opacity-70"
-                                                onClick={(e) => e.stopPropagation()}
-                                                style={{ color: colors.textSecondary }}
-                                            >
-                                                {<icons.Github size={14} />}
-                                                {t.projects.code}
-                                            </a>
+                                            {project.demo && (
+                                                <a
+                                                    href={project.demo}
+                                                    className="flex items-center gap-1.5 text-sm font-medium transition-all duration-200 hover:opacity-70"
+                                                    onClick={(e) => e.stopPropagation()}
+                                                    style={{ color: colors.accent }}
+                                                >
+                                                    {<icons.ExternalLink size={14} />}
+                                                    {t.projects.view}
+                                                </a>
+                                            )}
+                                            {project.github && (
+                                                <a
+                                                    href={project.github}
+                                                    className="flex items-center gap-1.5 text-sm font-medium transition-all duration-200 hover:opacity-70"
+                                                    onClick={(e) => e.stopPropagation()}
+                                                    style={{ color: colors.textSecondary }}
+                                                >
+                                                    {<icons.Github size={14} />}
+                                                    {t.projects.code}
+                                                </a>
+                                            )}
                                         </div>
                                     )}
                                 </div>
