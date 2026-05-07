@@ -91,9 +91,9 @@ export default function HomePage() {
         backgroundImage: darkMode ? 'none' : 'radial-gradient(circle at 12% 14%, rgba(59,130,246,0.08), transparent 34%), radial-gradient(circle at 88% 18%, rgba(56,189,248,0.08), transparent 32%)',
       }}
     >
-      <section className="min-h-screen flex items-center px-3 sm:px-4 lg:px-6">
+      <section className="min-h-screen flex items-start md:items-center pt-20 md:pt-0 px-3 sm:px-4 lg:px-6">
         <div className="max-w-6xl mx-auto w-full">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
+          <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}

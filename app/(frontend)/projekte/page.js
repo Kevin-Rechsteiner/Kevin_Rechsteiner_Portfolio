@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from "framer-motion";
-import { ExternalLink, Github, Clock } from "lucide-react";
+import { ExternalLink, Github, Clock, Zap } from "lucide-react";
 import { useTheme } from "@/app/context/ThemeContext";
 import { useLanguage } from "@/app/context/LanguageContext";
 import { useRouter } from "next/navigation";
@@ -61,7 +61,7 @@ export default function ProjektePage() {
                                     className="w-full h-52 sm:h-60 relative flex items-center justify-center transition-colors duration-300"
                                     style={{ backgroundColor: colors.bgSecondary }}
                                 >
-                                    {project.comingSoon && (
+                                    {(project.comingSoon || project.inProgress) && (
                                         <div
                                             className="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium"
                                             style={{
@@ -70,8 +70,11 @@ export default function ProjektePage() {
                                                 border: `1px solid ${colors.accent}40`,
                                             }}
                                         >
-                                            {<icons.Clock size={14} />}
-                                            {language === 'de' ? 'Demnächst' : 'Coming Soon'}
+                                            {project.inProgress ? <Zap size={14} /> : <Clock size={14} />}
+                                            {project.inProgress 
+                                                ? (language === 'de' ? 'In Arbeit' : 'In Progress')
+                                                : (language === 'de' ? 'Demnächst' : 'Coming Soon')
+                                            }
                                         </div>
                                     )}
                                 </div>

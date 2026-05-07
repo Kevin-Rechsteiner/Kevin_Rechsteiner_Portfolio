@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useParams } from "next/navigation";
-import { ArrowLeft, ExternalLink, Github, Clock } from "lucide-react";
+import { ArrowLeft, ExternalLink, Github, Clock, Zap } from "lucide-react";
 import Image from "next/image";
 import { useTheme } from "@/app/context/ThemeContext";
 import { useLanguage } from "@/app/context/LanguageContext";
@@ -83,19 +83,22 @@ export default function ProjektDetailPage() {
 
       <section className="pb-24 px-3 sm:px-4 lg:px-6">
         <div className="max-w-5xl mx-auto">
-          {project.comingSoon && (
-            <div
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium mb-8"
-              style={{
-                backgroundColor: `${colors.accent}20`,
-                color: colors.accent,
-                border: `1px solid ${colors.accent}40`,
-              }}
-            >
-              <Clock size={14} />
-              {language === 'de' ? 'Demnachst' : 'Coming soon'}
-            </div>
-          )}
+           {(project.comingSoon || project.inProgress) && (
+             <div
+               className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium mb-8"
+               style={{
+                 backgroundColor: `${colors.accent}20`,
+                 color: colors.accent,
+                 border: `1px solid ${colors.accent}40`,
+               }}
+             >
+               {project.inProgress ? <Zap size={14} /> : <Clock size={14} />}
+               {project.inProgress 
+                 ? (language === 'de' ? 'In Arbeit' : 'In Progress')
+                 : (language === 'de' ? 'Demnächst' : 'Coming soon')
+               }
+             </div>
+           )}
 
           <h2 className="text-xl sm:text-2xl font-bold tracking-tight mb-4" style={{ color: colors.text }}>
             {language === 'de' ? 'Technologien' : 'Technologies'}

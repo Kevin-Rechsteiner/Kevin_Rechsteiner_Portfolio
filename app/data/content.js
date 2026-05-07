@@ -30,14 +30,12 @@ export const CONTENT = {
         description: "Hier zeige ich eine Auswahl meiner bisherigen Arbeiten. Es sind Projekte, bei denen ich Ideen konsequent umgesetzt und dabei viel gelernt habe. Nicht alles ist perfekt, aber jedes Projekt steht für einen Schritt in meiner Entwicklung.",
         items: [
             {
-                title: "E-Commerce Konzept",
-                desc: "Ein Online-Shop Prototyp, entwickelt um Next.js und Routing-Konzepte zu verstehen.",
-                tags: ["Next.js", "Lernprojekt"]
-            },
-            {
-                title: "Task Manager",
-                desc: "Eine kleine App zur Organisation von Schulaufgaben. Fokus lag auf Funktionalität und sauberem Code.",
-                tags: ["React", "Productivity"]
+                title: "Clothes Archive",
+                desc: "Eine Anwendung zur Verwaltung und Katalogisierung von Kleidungsstücken. Ein Projekt, um moderne Web-Technologien und Datenbankkonzepte praktisch umzusetzen.",
+                tags: ["React", "Next.js", "Database"],
+                github: "https://github.com/Kevin-Rechsteiner/ClothesArchive",
+                image: "/projekte_fotos/fashion-clothes_ZN97ZIF3ZU.jpg",
+                inProgress: true
             }
         ]
     },
