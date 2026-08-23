@@ -41,7 +41,7 @@ const translations = {
                 {
                     title: 'Ultimate Ship Shooter',
                     desc: 'Ein Arcade-Spiel mit Echtzeit-WebSocket-Game-Loop, JWT-Authentifizierung und Highscore-API. Schulprojekt mit React-Frontend und Spring-Boot-Backend.',
-                    image: '/placehold.svg',
+                    image: '/projekte_fotos/UltimateShipShooter.png',
                     tags: ['React', 'Spring Boot', 'WebSocket', 'MySQL'],
                     details: [
                         'Echtzeit-Spielzustand über WebSocket mit Steuerung per Tastatur.',
@@ -111,7 +111,7 @@ const translations = {
                 {
                     title: 'Ultimate Ship Shooter',
                     desc: 'An arcade game with real-time WebSocket game loop, JWT authentication, and highscore API. School project with React frontend and Spring Boot backend.',
-                    image: '/placehold.svg',
+                    image: '/projekte_fotos/UltimateShipShooter.png',
                     tags: ['React', 'Spring Boot', 'WebSocket', 'MySQL'],
                     details: [
                         'Real-time game state over WebSocket with keyboard controls.',

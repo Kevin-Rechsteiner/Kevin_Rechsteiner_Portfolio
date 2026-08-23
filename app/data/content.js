@@ -35,7 +35,7 @@ export const CONTENT = {
                 tags: ["React", "Spring Boot", "WebSocket", "MySQL"],
                 githubFrontend: "https://github.com/Kevin-Rechsteiner/frontend_for_asteroid",
                 githubBackend: "https://github.com/Kevin-Rechsteiner/UltimateShipShooter",
-                image: "/placehold.svg"
+                image: "/projekte_fotos/UltimateShipShooter.png"
             },
             {
                 title: "Clothes Archive",
