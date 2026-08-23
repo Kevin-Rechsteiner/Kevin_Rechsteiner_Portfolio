@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useParams } from "next/navigation";
-import { ArrowLeft, ExternalLink, Github, Clock, Zap } from "lucide-react";
+import { ArrowLeft, ExternalLink, Github } from "lucide-react";
 import Image from "next/image";
 import { useTheme } from "@/app/context/ThemeContext";
 import { useLanguage } from "@/app/context/LanguageContext";
@@ -83,23 +83,6 @@ export default function ProjektDetailPage() {
 
       <section className="pb-24 px-3 sm:px-4 lg:px-6">
         <div className="max-w-5xl mx-auto">
-           {(project.comingSoon || project.inProgress) && (
-             <div
-               className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium mb-8"
-               style={{
-                 backgroundColor: `${colors.accent}20`,
-                 color: colors.accent,
-                 border: `1px solid ${colors.accent}40`,
-               }}
-             >
-               {project.inProgress ? <Zap size={14} /> : <Clock size={14} />}
-               {project.inProgress 
-                 ? (language === 'de' ? 'In Arbeit' : 'In Progress')
-                 : (language === 'de' ? 'Demnächst' : 'Coming soon')
-               }
-             </div>
-           )}
-
           <h2 className="text-xl sm:text-2xl font-bold tracking-tight mb-4" style={{ color: colors.text }}>
             {language === 'de' ? 'Technologien' : 'Technologies'}
           </h2>
@@ -132,26 +115,48 @@ export default function ProjektDetailPage() {
             ))}
           </div>
 
-          {!project.comingSoon && (
-            <div className="flex flex-wrap gap-5">
+          <div className="flex flex-wrap gap-5">
+            {project.demo && (
               <a
-                href={project.demo || '#'}
+                href={project.demo}
                 className="inline-flex items-center gap-2 text-sm font-medium transition-opacity duration-200 hover:opacity-80"
                 style={{ color: colors.accent }}
               >
                 <ExternalLink size={15} />
                 {t.projects.view}
               </a>
+            )}
+            {project.githubFrontend && (
               <a
-                href={project.github || '#'}
+                href={project.githubFrontend}
+                className="inline-flex items-center gap-2 text-sm font-medium transition-opacity duration-200 hover:opacity-80"
+                style={{ color: colors.textSecondary }}
+              >
+                <Github size={15} />
+                {t.projects.codeFrontend}
+              </a>
+            )}
+            {project.githubBackend && (
+              <a
+                href={project.githubBackend}
+                className="inline-flex items-center gap-2 text-sm font-medium transition-opacity duration-200 hover:opacity-80"
+                style={{ color: colors.textSecondary }}
+              >
+                <Github size={15} />
+                {t.projects.codeBackend}
+              </a>
+            )}
+            {project.github && (
+              <a
+                href={project.github}
                 className="inline-flex items-center gap-2 text-sm font-medium transition-opacity duration-200 hover:opacity-80"
                 style={{ color: colors.textSecondary }}
               >
                 <Github size={15} />
                 {t.projects.code}
               </a>
-            </div>
-          )}
+            )}
+          </div>
         </div>
       </section>
 

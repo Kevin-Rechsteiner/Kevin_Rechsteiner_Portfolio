@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from "framer-motion";
-import { ExternalLink, Github, Clock, Zap } from "lucide-react";
+import { ExternalLink, Github } from "lucide-react";
 import { useTheme } from "@/app/context/ThemeContext";
 import { useLanguage } from "@/app/context/LanguageContext";
 import { useRouter } from "next/navigation";
@@ -11,11 +11,11 @@ import { Footer } from "@/app/components/Footer";
 
 export default function ProjektePage() {
     const { colors, darkMode } = useTheme();
-    const { t, language } = useLanguage();
+    const { t } = useLanguage();
     const router = useRouter();
 
     const projects = t.projects.items;
-    const icons = { ExternalLink, Github, Clock, Zap };
+    const icons = { ExternalLink, Github };
 
     return (
         <motion.div 
@@ -72,29 +72,6 @@ export default function ProjektePage() {
                                             loading="lazy"
                                         />
                                     ) : null}
-                                    {(project.comingSoon || project.inProgress) && (
-                                        <div
-                                            className="absolute inset-0 flex items-center justify-center"
-                                            style={{
-                                                backgroundColor: 'rgba(0, 0, 0, 0.3)'
-                                            }}
-                                        >
-                                            <div
-                                                className="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium"
-                                                style={{
-                                                    backgroundColor: `${colors.accent}20`,
-                                                    color: colors.accent,
-                                                    border: `1px solid ${colors.accent}40`,
-                                                }}
-                                            >
-                                                {project.inProgress ? <Zap size={14} /> : <Clock size={14} />}
-                                                {project.inProgress 
-                                                    ? (language === 'de' ? 'In Arbeit' : 'In Progress')
-                                                    : (language === 'de' ? 'Demnächst' : 'Coming Soon')
-                                                }
-                                            </div>
-                                        </div>
-                                    )}
                                 </div>
 
                                 <div className="p-8">
@@ -127,32 +104,52 @@ export default function ProjektePage() {
                                         ))}
                                     </div>
 
-                                    {!project.comingSoon && (
-                                        <div className="flex gap-4">
-                                            {project.demo && (
-                                                <a
-                                                    href={project.demo}
-                                                    className="flex items-center gap-1.5 text-sm font-medium transition-all duration-200 hover:opacity-70"
-                                                    onClick={(e) => e.stopPropagation()}
-                                                    style={{ color: colors.accent }}
-                                                >
-                                                    {<icons.ExternalLink size={14} />}
-                                                    {t.projects.view}
-                                                </a>
-                                            )}
-                                            {project.github && (
-                                                <a
-                                                    href={project.github}
-                                                    className="flex items-center gap-1.5 text-sm font-medium transition-all duration-200 hover:opacity-70"
-                                                    onClick={(e) => e.stopPropagation()}
-                                                    style={{ color: colors.textSecondary }}
-                                                >
-                                                    {<icons.Github size={14} />}
-                                                    {t.projects.code}
-                                                </a>
-                                            )}
-                                        </div>
-                                    )}
+                                    <div className="flex gap-4">
+                                        {project.demo && (
+                                            <a
+                                                href={project.demo}
+                                                className="flex items-center gap-1.5 text-sm font-medium transition-all duration-200 hover:opacity-70"
+                                                onClick={(e) => e.stopPropagation()}
+                                                style={{ color: colors.accent }}
+                                            >
+                                                {<icons.ExternalLink size={14} />}
+                                                {t.projects.view}
+                                            </a>
+                                        )}
+                                        {project.githubFrontend && (
+                                            <a
+                                                href={project.githubFrontend}
+                                                className="flex items-center gap-1.5 text-sm font-medium transition-all duration-200 hover:opacity-70"
+                                                onClick={(e) => e.stopPropagation()}
+                                                style={{ color: colors.textSecondary }}
+                                            >
+                                                {<icons.Github size={14} />}
+                                                {t.projects.codeFrontend}
+                                            </a>
+                                        )}
+                                        {project.githubBackend && (
+                                            <a
+                                                href={project.githubBackend}
+                                                className="flex items-center gap-1.5 text-sm font-medium transition-all duration-200 hover:opacity-70"
+                                                onClick={(e) => e.stopPropagation()}
+                                                style={{ color: colors.textSecondary }}
+                                            >
+                                                {<icons.Github size={14} />}
+                                                {t.projects.codeBackend}
+                                            </a>
+                                        )}
+                                        {project.github && (
+                                            <a
+                                                href={project.github}
+                                                className="flex items-center gap-1.5 text-sm font-medium transition-all duration-200 hover:opacity-70"
+                                                onClick={(e) => e.stopPropagation()}
+                                                style={{ color: colors.textSecondary }}
+                                            >
+                                                {<icons.Github size={14} />}
+                                                {t.projects.code}
+                                            </a>
+                                        )}
+                                    </div>
                                 </div>
                             </div>
                         ))}

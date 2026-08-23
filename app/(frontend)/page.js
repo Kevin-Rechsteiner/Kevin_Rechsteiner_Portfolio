@@ -155,7 +155,7 @@ export default function HomePage() {
                 }}
               >
                 <Image
-                  src="/placerholder600x400.svg"
+                  src="/Portrait.jpg"
                   alt="Kevin Rechsteiner"
                   width={320}
                   height={480}
