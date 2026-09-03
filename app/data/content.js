@@ -38,6 +38,13 @@ export const CONTENT = {
                 image: "/projekte_fotos/UltimateShipShooter.png"
             },
             {
+                title: "Friendly Feud",
+                desc: "Multiplayer-Buzzerspiel im Stil von „Family Feud“ – entwickelt im Team beim Hackathon 2026. Zwei Teams treten in Echtzeit gegeneinander an und buzzern um Antwortrecht.",
+                tags: ["Next.js", "TypeScript", "WebSocket", "Teamarbeit"],
+                github: "https://github.com/danielecitran/friendlyfeud",
+                image: "/projekte_fotos/FriendlyFeud.png"
+            },
+            {
                 title: "Clothes Archive",
                 desc: "Eine Anwendung zur Verwaltung und Katalogisierung von Kleidungsstücken. Ein Projekt, um moderne Web-Technologien und Datenbankkonzepte praktisch umzusetzen.",
                 tags: ["React", "Next.js", "Database"],

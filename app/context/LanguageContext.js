@@ -53,6 +53,19 @@ const translations = {
                     githubBackend: 'https://github.com/Kevin-Rechsteiner/UltimateShipShooter',
                 },
                 {
+                    title: 'Friendly Feud',
+                    desc: 'Multiplayer-Buzzerspiel im Stil von „Family Feud“ – entwickelt im Team beim Hackathon 2026. Zwei Teams treten in Echtzeit gegeneinander an und buzzern um Antwortrecht.',
+                    image: '/projekte_fotos/FriendlyFeud.png',
+                    tags: ['Next.js', 'TypeScript', 'WebSocket', 'Teamarbeit'],
+                    details: [
+                        'Teamprojekt beim Hackathon 2026 zusammen mit Daniele Citran und Lasse Nothelfer.',
+                        'Echtzeit-Spielzustand über WebSockets – Räume, Buzzer und Punktestand live synchronisiert.',
+                        'Next.js-Frontend mit Custom Node.js-Server und In-Memory-Spiel-Engine.',
+                    ],
+                    demo: null,
+                    github: 'https://github.com/danielecitran/friendlyfeud',
+                },
+                {
                     title: 'Clothes Archive',
                     desc: 'Eine Anwendung zur Verwaltung und Katalogisierung von Kleidungsstücken. Ein Projekt, um moderne Web-Technologien und Datenbankkonzepte praktisch umzusetzen.',
                     image: '/projekte_fotos/fashion-clothes_ZN97ZIF3ZU.jpg',
@@ -121,6 +134,19 @@ const translations = {
                     demo: null,
                     githubFrontend: 'https://github.com/Kevin-Rechsteiner/frontend_for_asteroid',
                     githubBackend: 'https://github.com/Kevin-Rechsteiner/UltimateShipShooter',
+                },
+                {
+                    title: 'Friendly Feud',
+                    desc: 'Multiplayer buzzer game inspired by Family Feud – built as a team at Hackathon 2026. Two teams compete in real time and buzz in to answer questions.',
+                    image: '/projekte_fotos/FriendlyFeud.png',
+                    tags: ['Next.js', 'TypeScript', 'WebSocket', 'Teamwork'],
+                    details: [
+                        'Team project at Hackathon 2026 together with Daniele Citran and Lasse Nothelfer.',
+                        'Real-time game state over WebSockets – rooms, buzzer, and scores synced live.',
+                        'Next.js frontend with a custom Node.js server and in-memory game engine.',
+                    ],
+                    demo: null,
+                    github: 'https://github.com/danielecitran/friendlyfeud',
                 },
                 {
                     title: 'Clothes Archive',
